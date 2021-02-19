@@ -15,14 +15,18 @@
 - Alley INT
 
 ### Game
-- ID INT
-- Name STRING
-- GameSession GameSession
+- GameSessions map[GameSessionID]GameSession
+- Alleys - **const [1,2,3,4]**
 
 ### Player
 - Name STRING
-- Score INT
+- MAX_ROLLS_ALLOWED INT **const**
 - Rolls INT
+- Score INT
+- CanPlay BOOL
+- FirstRoll BOOL
+- CurrentRoll INT
+- FrameIndex INT
 
 --------------------------------------
 
