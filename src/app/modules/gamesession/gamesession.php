@@ -16,12 +16,29 @@ class GameSession {
         $this->id = static::$gameSessIdIncrementor;
     }
 
-    public function setPlayers(array $players) {
+    public function getID(): int {
+        return $this->id;
+    }
+
+    public function setPlayers(array $players): void {
         $this->players = $players;
     }
 
-    public function setAlley(int $alley) {
+    public function setAlley(int $alley): void {
         $this->alley = $alley;
+    }
+
+    public function getAlley(): int {
+        return $this->alley;
+    }
+
+    public function roll(Player $currPlayer, int $pins): void {
+        foreach ($this->players as $player) {
+            if ($player->getName() == $currPlayer->getName()) {
+                $player->roll($pins);
+                break;
+            }
+        }
     }
 
     public function calcWinner(): ?Player {
@@ -29,7 +46,7 @@ class GameSession {
         $maxScore = 0;
 
         foreach ($this->players as $player) {
-            if ($player->canPlay()) {
+            if ($player->getCanPlay()) {
                 return null;
             }
 
